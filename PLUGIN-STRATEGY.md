@@ -22,6 +22,15 @@ Two consequences:
 
 - **Curation only takes effect when you disable the rest.** The 32 here are the recommendation, not
   the enforcement.
+- **Marketplace sync does not reach private sandboxes, and must not be made to.** The policy plugin
+  shows as enabled but its files never land in a cloud sandbox: its source is a `git-subdir` clone of
+  `mindclade/mindclade-claude-plugins`, which is **private**, so the sandbox cannot fetch it. Only
+  Anthropic's five first-party plugins arrive, because the platform serves those rather than cloning
+  a git remote. **Do not fix this by making the repo public.** The shipped `SKILL.md` quotes §18's
+  non-goals, the `mindclade/mindclade` + `mindclade/sdk` topology, and the `operation_events` /
+  `next_sequence` / fencing-token design — exactly the material §13.6's public leakage gate exists to
+  contain. **Distribute by vendoring instead:** copy `PLUGIN-STRATEGY.md` into the working repo and
+  reference it from `CLAUDE.md`. That path has no leakage surface and needs no marketplace.
 - **`glab` and `mr-review` did not sync.** Both come from `gitlab.com/gitlab-org/ai/skills.git`; if
   you need them in cloud sessions, check whether that host is reachable from the sandbox.
 
@@ -190,6 +199,7 @@ Anything above ~1,000 needs a reason beyond "might be useful".
 | 13 | Exclude `compound-engineering` | 33 skills / ~12 MB; ~1/3 duplicates `superpowers`, ~1/3 is product-marketing surface, and `lfg` violates the release guardrail | Low — but re-check `ce-babysit-pr` only if `/autofix-pr` proves insufficient |
 | 14 | Exclude `mcp-server-dev` and route away from `mcp-builder` | §18 lists generated MCP servers as an explicit non-goal for first GA; MCP appears once in the plan, in that list | Revisit only in a post-GA vertical plan |
 | 15 | Route away from 9 of `terraform`'s 16 skills | They cover authoring a Terraform provider with the Plugin Framework — the same §18 non-goal. Only the 6 consumer-side skills apply | None; the plugin stays for those six |
+| 16 | Keep the marketplace repo private; distribute the policy by vendoring | The plugin's `SKILL.md` carries §18 non-goals, repo topology and persistence internals; publishing it to make marketplace sync work would breach §13.6's leakage gate | None — vendoring into the working repo is strictly better |
 | 8 | Exclude `rust-skills` | `UserPromptSubmit` hook injects a routing framework into every prompt regardless of topic | Low, but the constant cost returns |
 
 ## 9. Appendix — plugins to disable
