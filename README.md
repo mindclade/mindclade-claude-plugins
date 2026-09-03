@@ -120,6 +120,12 @@ C4 documentation alongside the ADR register.
 
 - **`c4-architecture`** — Comprehensive C4 architecture documentation workflow with bottom-up code analysis, component synthesis...
 
+## Using it
+
+Routing policy for these plugins lives in [PLUGIN-STRATEGY.md](PLUGIN-STRATEGY.md) — which task
+goes to which plugin, which bundled skills to never load, plan-phase mapping, and guardrails.
+Paste it into `CLAUDE.md` or reference it with `@PLUGIN-STRATEGY.md`.
+
 ## Duplicate removal
 
 Every skill, agent, and command across the set was scanned for name collisions; the set is now
