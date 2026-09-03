@@ -1,6 +1,6 @@
 # mindclade-claude-plugins
 
-A Claude Code marketplace of **36 plugins**, curated against
+A Claude Code marketplace of **32 plugins**, curated against
 *Mindclade Authoritative Protocol, SDK Foundry, and Product Monorepo Production Plan v3.1*.
 
 The plan's stack line (Part II, Global implementation constraints) is the selection authority:
@@ -119,6 +119,27 @@ Supply-chain hardening, leakage gates, OpenTelemetry traces and SLOs.
 C4 documentation alongside the ADR register.
 
 - **`c4-architecture`** — Comprehensive C4 architecture documentation workflow with bottom-up code analysis, component synthesis...
+
+## Duplicate removal
+
+Every skill, agent, and command across the set was scanned for name collisions; the set is now
+collision-free (0 duplicate skills, 0 agents, 0 commands). Removed:
+
+| Removed | Reason |
+|---|---|
+| `hf-cli` | Strict subset of `huggingface-skills`, which ships `hf-cli` as one of its 25 skills |
+| `skill-creator` | `claude-api` ships the identical `skill-creator` skill |
+| `api-testing-observability` | Its only agent, `api-documenter`, is duplicated by `documentation-generation`, which also has `openapi-spec-generation` |
+| `git-pr-workflows` | Its only agent, `code-reviewer`, is duplicated by `feature-dev`; its commands overlap the `github` MCP and `code-review` |
+
+Known redundancy left in deliberately:
+
+- **`claude-api` carries 16 skills unrelated to this work** (`pptx`, `xlsx`, `docx`, `pdf`,
+  `algorithmic-art`, `brand-guidelines`, `canvas-design`, `slack-gif-creator`, `theme-factory`,
+  and others). It is kept for its `claude-api`, `mcp-builder`, and `skill-creator` skills. Drop it
+  if that context cost outweighs those three.
+- **`huggingface-skills` and `llm-finetuning` overlap functionally** on TRL and LoRA training, but
+  share no skill names — one is HF-ecosystem specific, the other framework-agnostic.
 
 ## Selection notes
 

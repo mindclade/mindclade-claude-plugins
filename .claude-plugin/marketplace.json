@@ -64,21 +64,6 @@
       "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management"
     },
     {
-      "name": "skill-creator",
-      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/skill-creator"
-      },
-      "category": "development",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator"
-    },
-    {
       "name": "github",
       "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
       "category": "productivity",
@@ -88,23 +73,6 @@
         "path": "external_plugins/github"
       },
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/external_plugins/github"
-    },
-    {
-      "name": "git-pr-workflows",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/git-pr-workflows"
-      },
-      "description": "Git workflow automation, pull request enhancement, and team onboarding processes",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "workflows"
     },
     {
       "name": "cicd-automation",
@@ -293,23 +261,6 @@
       "category": "documentation"
     },
     {
-      "name": "api-testing-observability",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/api-testing-observability"
-      },
-      "description": "API testing automation, request mocking, OpenAPI documentation generation, observability setup, and monitoring",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "api"
-    },
-    {
       "name": "cloud-sql-postgresql",
       "description": "Create, connect, and interact with a Cloud SQL for PostgreSQL database and data.",
       "author": {
@@ -465,16 +416,6 @@
         "url": "https://github.com/openai/openai-developers-for-claude.git",
         "path": "plugins/openai-developers"
       }
-    },
-    {
-      "name": "hf-cli",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/huggingface/skills.git",
-        "path": "skills/hf-cli"
-      },
-      "skills": "./",
-      "description": "Execute Hugging Face Hub operations using the hf CLI. Install additional Hugging Face skills, discover agent resources, download models/datasets, upload files, manage repos, and run cloud compute jobs."
     },
     {
       "name": "agent-teams",
