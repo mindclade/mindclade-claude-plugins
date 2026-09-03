@@ -8,6 +8,38 @@ Authority for every routing decision below is
 
 ---
 
+## 0. What is actually loaded
+
+Syncing this marketplace **adds a source; it does not disable anything.** As of the last check you
+have **117 plugins active — 87 of them outside this curated set.** Until those are disabled in
+**Settings → Customize plugins**, Claude can reach `kubernetes-operations`, `gitlab`, `rust-skills`,
+`llm-application-dev`, `comprehensive-review` and 82 others that this policy deliberately excludes.
+
+Two consequences:
+
+- **Curation only takes effect when you disable the rest.** The 32 here are the recommendation, not
+  the enforcement.
+- **`glab` and `mr-review` did not sync.** Both come from `gitlab.com/gitlab-org/ai/skills.git`; if
+  you need them in cloud sessions, check whether that host is reachable from the sandbox.
+
+Where an excluded plugin overlaps one in the table below, prefer the one in the table.
+
+### First-party plugins from the Claude directory
+
+These five are published by Anthropic in the web plugin directory and have **no git source in
+`anthropics/claude-plugins-official`**, so they cannot be aggregated into this marketplace — install
+them from the directory directly.
+
+| Plugin | Use it for | Don't use it for |
+|---|---|---|
+| **Bio Research** | Protein language modelling and structure-prediction literature, experiment design, research synthesis. The most relevant first-party plugin to Mindclade's actual product. | Anything in the control plane or SDK path. |
+| **Engineering** | Standups, incident response. | Code review, ADRs, technical docs — `code-review`, `documentation-generation` and `c4-architecture` are the routed choices. |
+| **Data** | Ad-hoc SQL, dataset exploration, dashboards for stakeholders. | Schema design or migrations — that is `database-migrations`. |
+| **Design** | The Next.js Studio v1 surface only. | The rest of the monorepo, which has no design surface. |
+| **Product Management** | `BLUEPRINT.md`, feature specs, roadmap framing. | Implementation planning — that is `superpowers:writing-plans`. |
+
+---
+
 ## 1. Default posture
 
 Before any non-trivial task, in this order:
