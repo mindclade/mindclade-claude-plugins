@@ -1,502 +1,22 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "mindclade-claude-plugins",
-  "description": "Mindclade's Claude Code plugin set, aggregated from upstream marketplaces so it can be synced into Claude Code on the web.",
+  "description": "Mindclade's curated Claude Code plugin set: GitLab-native workflow, Python/Go/TS/Rust language servers, OpenTofu + ArgoCD infra, ML training and fine-tuning, protobuf contracts, and security review.",
   "owner": {
     "name": "Mindclade",
     "email": "robpearc@mindclade.com"
   },
   "plugins": [
     {
-      "name": "accessibility-compliance",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/accessibility-compliance"
-      },
-      "description": "WCAG accessibility auditing, compliance validation, UI testing for screen readers, keyboard navigation, and inclusive design",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "accessibility"
-    },
-    {
-      "name": "adr-writer",
-      "description": "Interactive ADR (Architecture Decision Record) writing tool with PRD traceability. Facilitates architectural decisions through guided Q&A sessions.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/haandol/adr-writer.git",
-        "sha": "54a0f5ff1d49782cb3e93cc83aa783a4eee70a7c"
-      },
-      "homepage": "https://github.com/haandol/adr-writer"
-    },
-    {
-      "name": "agent-orchestration",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/agent-orchestration"
-      },
-      "description": "Multi-agent system optimization, agent improvement workflows, and context management",
-      "version": "1.2.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "ai-ml"
-    },
-    {
-      "name": "agent-sdk-dev",
-      "description": "Development kit for working with the Claude Agent SDK",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/agent-sdk-dev"
-      },
-      "category": "development",
-      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/agent-sdk-dev"
-    },
-    {
-      "name": "agent-teams",
-      "description": "Orchestrate multi-agent teams for parallel code review, hypothesis-driven debugging, and coordinated feature development using Claude Code's Agent Teams",
-      "version": "1.0.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/agent-teams"
-      },
-      "category": "workflows",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "ai-ml-engineering-pack",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/jeremylongshore/tons-of-skills-marketplace.git",
-        "path": "plugins/packages/ai-ml-engineering-pack"
-      },
-      "description": "Professional AI/ML Engineering toolkit: Prompt engineering, LLM integration, RAG systems, AI safety with 12 expert plugins",
-      "version": "1.30.0",
-      "category": "packages",
-      "keywords": [
-        "ai",
-        "ml",
-        "llm",
-        "prompt-engineering",
-        "rag",
-        "vector-database",
-        "ai-safety",
-        "openai",
-        "anthropic",
-        "package"
-      ],
-      "author": {
-        "name": "Jeremy Longshore",
-        "email": "[email protected]"
-      }
-    },
-    {
-      "name": "alloydb",
-      "source": {
-        "source": "github",
-        "repo": "gemini-cli-extensions/alloydb",
-        "ref": "0.2.0"
-      },
-      "description": "Create, connect, and interact with an AlloyDB for PostgreSQL database and data."
-    },
-    {
-      "name": "alloydb-omni",
-      "source": {
-        "source": "github",
-        "repo": "gemini-cli-extensions/alloydb-omni",
-        "ref": "0.2.1"
-      },
-      "description": "Create, connect, and interact with an AlloyDB Omni database and data."
-    },
-    {
-      "name": "anthropic-pack",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/jeremylongshore/tons-of-skills-marketplace.git",
-        "path": "plugins/saas-packs/anthropic-pack"
-      },
-      "description": "Claude Code skill pack for Anthropic (30 skills)",
-      "version": "1.6.0",
-      "category": "saas-packs",
-      "keywords": [
-        "anthropic",
-        "saas",
-        "sdk",
-        "integration"
-      ],
-      "author": {
-        "name": "Jeremy Longshore",
-        "email": "jeremy@intentsolutions.io",
-        "url": "https://github.com/jeremylongshore"
-      }
-    },
-    {
-      "name": "api-batch-processor",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/jeremylongshore/tons-of-skills-marketplace.git",
-        "path": "plugins/api-development/api-batch-processor"
-      },
-      "description": "Implement batch API operations with bulk processing and job queues",
-      "version": "1.25.0",
-      "category": "api-development",
-      "keywords": [
-        "batch",
-        "bulk",
-        "queue",
-        "job-processing"
-      ],
-      "author": {
-        "name": "Jeremy Longshore",
-        "email": "[email protected]"
-      }
-    },
-    {
-      "name": "api-scaffolding",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/api-scaffolding"
-      },
-      "description": "REST and GraphQL API scaffolding, framework selection, backend architecture, and API generation",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "api"
-    },
-    {
-      "name": "api-testing-observability",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/api-testing-observability"
-      },
-      "description": "API testing automation, request mocking, OpenAPI documentation generation, observability setup, and monitoring",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "api"
-    },
-    {
-      "name": "application-performance",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/application-performance"
-      },
-      "description": "Application profiling, performance optimization, and observability for frontend and backend systems",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "performance"
-    },
-    {
-      "name": "astral",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/astral-sh/claude-code-plugins.git",
-        "path": "plugins/astral"
-      },
-      "description": "Skills for working with Python using Astral tools."
-    },
-    {
-      "name": "avoid-ai-writing",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/avoid-ai-writing"
-      },
-      "description": "Audit and rewrite prose that reads as machine-generated, across READMEs, changelogs, PR descriptions, docs, and blog copy, with detect-only, rewrite, and edit-in-place modes.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Conor Bronsdon",
-        "url": "https://github.com/conorbronsdon"
-      },
-      "homepage": "https://github.com/conorbronsdon/avoid-ai-writing",
-      "license": "MIT",
-      "category": "documentation"
-    },
-    {
-      "name": "azure",
-      "description": "Transform Claude into an Azure expert. This plugin integrates the Azure MCP server and specialized Azure skills to move beyond generic advice. It enables Claude to perform real-world tasks: listing resources, validating deployments, diagnosing infrastructure issues, and optimizing costs across 50+ Azure services.",
-      "category": "deployment",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/microsoft/azure-skills.git",
-        "sha": "ab81bf68abfb0cffd3d7ecf468493c97cd94f6bf"
-      },
-      "homepage": "https://github.com/microsoft/azure-skills"
-    },
-    {
-      "name": "backend-api-security",
-      "description": "API security hardening, authentication implementation, authorization patterns, rate limiting, and input validation",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/backend-api-security"
-      },
-      "category": "security",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "backend-development",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/backend-development"
-      },
-      "description": "Backend API design, GraphQL architecture, workflow orchestration with Temporal, and test-driven backend development",
-      "version": "1.3.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "development"
-    },
-    {
-      "name": "before-you-build",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/before-you-build"
-      },
-      "description": "Pre-build product risk review for founders, product teams, and AI-assisted builders before implementation starts",
-      "version": "0.1.1",
-      "author": {
-        "name": "bin1874",
-        "url": "https://github.com/bin1874/before-you-build-skill"
-      },
-      "homepage": "https://github.com/bin1874/before-you-build-skill",
-      "license": "MIT",
-      "category": "business"
-    },
-    {
-      "name": "bigtable",
-      "source": {
-        "source": "github",
-        "repo": "GoogleCloudPlatform/cloud-bigtable-ecosystem",
-        "ref": "v0.4.0"
-      },
-      "description": "Connect, query, and interact with Cloud Bigtable."
-    },
-    {
-      "name": "block-no-verify",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/block-no-verify"
-      },
-      "description": "PreToolUse hook that prevents AI agents from using --no-verify, --no-gpg-sign, and other bypass flags that skip git hooks",
-      "version": "1.0.1",
-      "author": {
-        "name": "cskwork"
-      },
-      "homepage": "https://github.com/cskwork",
-      "license": "MIT",
-      "category": "security"
-    },
-    {
-      "name": "c4-architecture",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/c4-architecture"
-      },
-      "description": "Comprehensive C4 architecture documentation workflow with bottom-up code analysis, component synthesis, container mapping, and context diagram generation",
-      "version": "1.0.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "documentation"
-    },
-    {
-      "name": "cicd-automation",
-      "description": "CI/CD pipeline configuration, GitHub Actions/GitLab CI workflow setup, and automated deployment pipeline orchestration",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/cicd-automation"
-      },
-      "category": "infrastructure",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "ckeditor",
-      "description": "Install, configure, and integrate CKEditor 5 (free and premium) in any JavaScript project.",
-      "author": {
-        "name": "CKEditor (CKSource)"
-      },
+      "name": "superpowers",
+      "description": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.",
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://github.com/ckeditor/skills.git",
-        "sha": "7fc22e0820b27c00a9207076fce4e49d959b552e"
+        "url": "https://github.com/obra/superpowers.git",
+        "sha": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797"
       },
-      "homepage": "https://ckeditor.com"
-    },
-    {
-      "name": "claude-api",
-      "description": "Claude API and SDK documentation skill for building LLM-powered applications",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/anthropics/skills.git"
-      },
-      "strict": false,
-      "skills": [
-        "./skills/claude-api"
-      ]
-    },
-    {
-      "name": "claude-code-setup",
-      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/claude-code-setup"
-      },
-      "category": "productivity",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup"
-    },
-    {
-      "name": "claude-md-management",
-      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/claude-md-management"
-      },
-      "category": "productivity",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management"
-    },
-    {
-      "name": "cloud-infrastructure",
-      "description": "Cloud architecture design for AWS/Azure/GCP/OCI, Kubernetes cluster configuration, Terraform infrastructure-as-code, hybrid cloud networking, and multi-cloud cost optimization",
-      "version": "1.3.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/cloud-infrastructure"
-      },
-      "category": "infrastructure",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "cloud-sql-postgresql",
-      "description": "Create, connect, and interact with a Cloud SQL for PostgreSQL database and data.",
-      "author": {
-        "name": "Google LLC"
-      },
-      "category": "database",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/gemini-cli-extensions/cloud-sql-postgresql.git",
-        "sha": "69cf78726668b7b922758b963212fe46744511ac"
-      },
-      "homepage": "https://cloud.google.com/sql"
-    },
-    {
-      "name": "cloudflare",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/cloudflare/skills.git"
-      },
-      "description": "Build, test, and deploy applications on Cloudflare with platform guidance Skills and the Cloudflare MCP server."
-    },
-    {
-      "name": "code-documentation",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/code-documentation"
-      },
-      "description": "Documentation generation, code explanation, and technical writing with automated doc generation and tutorial creation",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "documentation"
-    },
-    {
-      "name": "code-refactoring",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/code-refactoring"
-      },
-      "description": "Code cleanup, refactoring automation, and technical debt management with context restoration",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "utilities"
+      "homepage": "https://github.com/obra/superpowers.git"
     },
     {
       "name": "code-review",
@@ -514,381 +34,6 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/code-review"
     },
     {
-      "name": "code-simplifier",
-      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality. Focuses on recently modified code.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/code-simplifier"
-      },
-      "category": "productivity",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier"
-    },
-    {
-      "name": "codebase-cleanup",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/codebase-cleanup"
-      },
-      "description": "Technical debt reduction, dependency updates, and code refactoring automation",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "modernization"
-    },
-    {
-      "name": "commit-messages",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/commit-messages"
-      }
-    },
-    {
-      "name": "compound-engineering",
-      "description": "Brainstorm, plan, debug, review, and compound learnings with AI agents",
-      "author": {
-        "name": "Kieran Klaassen and Trevin Chow"
-      },
-      "homepage": "https://github.com/EveryInc/compound-engineering-plugin",
-      "tags": [
-        "ai-powered",
-        "compound-engineering",
-        "workflow-automation",
-        "code-review",
-        "quality",
-        "knowledge-management"
-      ],
-      "source": {
-        "source": "url",
-        "url": "https://github.com/EveryInc/compound-engineering-plugin.git"
-      }
-    },
-    {
-      "name": "comprehensive-review",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/comprehensive-review"
-      },
-      "description": "Multi-perspective code analysis covering architecture, security, and best practices",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "quality"
-    },
-    {
-      "name": "conductor",
-      "description": "Context-Driven Development plugin that transforms Claude Code into a project management tool with structured workflow: Context \u2192 Spec & Plan \u2192 Implement",
-      "version": "1.2.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/conductor"
-      },
-      "category": "workflows",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "Apache-2.0"
-    },
-    {
-      "name": "context-management",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/context-management"
-      },
-      "description": "Context persistence, restoration, and long-running conversation management",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "ai-ml"
-    },
-    {
-      "name": "data-agent-kit-starter-pack",
-      "description": "This plugin provides a specialized suite of skills for data engineers and database practitioners working on Google Cloud. It acts as an expert assistant, allowing you to use natural language prompts in your preferred coding agent to architect complex data pipelines, transform data with dbt, write Spark and BigQuery SQL notebooks, and orchestrate end-to-end workflows across GCP's data ecosystem.",
-      "author": {
-        "name": "Google LLC"
-      },
-      "category": "development",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git",
-        "sha": "b687ed19582cb6f89ef3075ef1e5df3e2dadbc93"
-      },
-      "homepage": "https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack"
-    },
-    {
-      "name": "data-engineering",
-      "description": "Data engineering plugin - warehouse exploration, pipeline authoring, Airflow integration",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/astronomer/agents.git",
-        "sha": "dbd9bb79c4f7b7ac9c1cdd2b4b75213c81f423e5"
-      },
-      "homepage": "https://github.com/astronomer/agents"
-    },
-    {
-      "name": "data-validation-suite",
-      "description": "Schema validation, data quality monitoring, streaming validation pipelines, and input validation for backend APIs",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/data-validation-suite"
-      },
-      "category": "data",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "database-cloud-optimization",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/database-cloud-optimization"
-      },
-      "description": "Database query optimization, cloud cost optimization, and scalability improvements",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "performance"
-    },
-    {
-      "name": "database-design",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/database-design"
-      },
-      "description": "Database architecture, schema design, and SQL optimization for production systems",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "database"
-    },
-    {
-      "name": "database-migrations",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/database-migrations"
-      },
-      "description": "Database migration automation, observability, and cross-database migration strategies",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "database"
-    },
-    {
-      "name": "dataproc",
-      "source": {
-        "source": "github",
-        "repo": "gemini-cli-extensions/dataproc",
-        "ref": "0.1.0"
-      },
-      "description": "Skills for Dataproc."
-    },
-    {
-      "name": "db-context-engineering",
-      "source": {
-        "source": "git-subdir",
-        "url": "GoogleCloudPlatform/db-context-enrichment",
-        "path": "plugin",
-        "ref": "v0.7.2"
-      },
-      "description": "Context Engineering Agent for generating and maintaining QueryData / Conversational Analytics API context sets (templates, facets, value searches) for natural language to SQL tasks. Works with AlloyDB, Cloud SQL for MySQL, Cloud SQL for PostgreSQL, and Spanner."
-    },
-    {
-      "name": "debugging-toolkit",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/debugging-toolkit"
-      },
-      "description": "Interactive debugging, developer experience optimization, and smart debugging workflows",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "development"
-    },
-    {
-      "name": "dependency-management",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/dependency-management"
-      },
-      "description": "Dependency auditing, version management, and security vulnerability scanning",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "utilities"
-    },
-    {
-      "name": "deployment-strategies",
-      "description": "Deployment patterns, rollback automation, and infrastructure templates",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/deployment-strategies"
-      },
-      "category": "infrastructure",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "deployment-validation",
-      "description": "Pre-deployment checks, configuration validation, and deployment readiness assessment",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/deployment-validation"
-      },
-      "category": "infrastructure",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "developer-essentials",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/developer-essentials"
-      },
-      "description": "Essential developer skills including Git workflows, SQL optimization, error handling, code review, E2E testing, authentication, debugging, and monorepo management",
-      "version": "1.0.4",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "development"
-    },
-    {
-      "name": "dgx-spark-ops",
-      "description": "NVIDIA DGX Spark (GB10) environment operations. Use when setting up, preflighting, or debugging ML workloads on DGX Spark or aarch64 Blackwell hardware \u2014 CUDA-13 wheel/ABI checks, unified-memory OOM ladders, thermal monitoring.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/dgx-spark-ops"
-      },
-      "category": "ai-ml",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "documentation-generation",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/documentation-generation"
-      },
-      "description": "OpenAPI specification generation, Mermaid diagram creation, tutorial writing, API reference documentation",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "documentation"
-    },
-    {
-      "name": "documentation-standards",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/documentation-standards"
-      },
-      "description": "HADS (Human-AI Document Standard) \u2014 semantic tagging convention for docs that work for both humans and AI models \u2014 plus the grounded-vault pattern for provenance-linked, drift-checked knowledge stores.",
-      "version": "1.1.0",
-      "author": {
-        "name": "Niksa Barlovic",
-        "url": "https://github.com/catcam"
-      },
-      "homepage": "https://github.com/catcam/hads",
-      "license": "MIT",
-      "category": "documentation"
-    },
-    {
-      "name": "error-debugging",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/error-debugging"
-      },
-      "description": "Error analysis, trace debugging, and multi-agent problem diagnosis",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "utilities"
-    },
-    {
       "name": "feature-dev",
       "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
       "author": {
@@ -904,25 +49,8 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/feature-dev"
     },
     {
-      "name": "framework-migration",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/framework-migration"
-      },
-      "description": "Framework updates, migration planning, and architectural transformation workflows",
-      "version": "1.3.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "modernization"
-    },
-    {
-      "name": "frontend-design",
-      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Generates creative, polished code that avoids generic AI aesthetics.",
+      "name": "claude-md-management",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
       "author": {
         "name": "Anthropic",
         "email": "support@anthropic.com"
@@ -930,116 +58,25 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/frontend-design"
+        "path": "plugins/claude-md-management"
       },
-      "category": "development",
-      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/frontend-design"
-    },
-    {
-      "name": "frontend-mobile-development",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/frontend-mobile-development"
-      },
-      "description": "Frontend UI development and mobile application implementation across platforms",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "development"
-    },
-    {
-      "name": "frontend-react",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/jagreehal/jagreehal-claude-skills.git"
-      },
-      "description": "Frontend development: React patterns, testable+storybookable components, Storybook journeys, UI design principles, browser automation",
-      "version": "1.3.0",
-      "license": "MIT",
-      "keywords": [
-        "react",
-        "frontend",
-        "storybook",
-        "testing",
-        "msw",
-        "ui",
-        "browser-automation"
-      ],
-      "category": "development",
-      "skills": [
-        "./skills/react-development",
-        "./skills/react-testable-storybookable",
-        "./skills/storybook-journeys",
-        "./skills/ui-design-principles",
-        "./skills/agent-browser"
-      ]
-    },
-    {
-      "name": "full-stack-orchestration",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/full-stack-orchestration"
-      },
-      "description": "End-to-end feature orchestration with testing, security, performance, and deployment",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "workflows"
-    },
-    {
-      "name": "functional-programming",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/functional-programming"
-      },
-      "description": "Functional programming with Elixir, OTP patterns, Phoenix framework, and distributed systems",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "git-pr-workflows",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/git-pr-workflows"
-      },
-      "description": "Git workflow automation, pull request enhancement, and team onboarding processes",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "workflows"
-    },
-    {
-      "name": "github",
-      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
       "category": "productivity",
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management"
+    },
+    {
+      "name": "skill-creator",
+      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "external_plugins/github"
+        "path": "plugins/skill-creator"
       },
-      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/external_plugins/github"
+      "category": "development",
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator"
     },
     {
       "name": "gitlab",
@@ -1053,343 +90,11 @@
       "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/external_plugins/gitlab"
     },
     {
-      "name": "gitlab-babysit-mr",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/gitlab-babysit-mr"
-      }
-    },
-    {
-      "name": "gitlab-mr-description",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/gitlab-mr-description"
-      }
-    },
-    {
-      "name": "gitlab-pipeline-watch",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/gitlab-pipeline-watch"
-      }
-    },
-    {
       "name": "glab",
       "source": {
         "source": "git-subdir",
         "url": "https://gitlab.com/gitlab-org/ai/skills.git",
         "path": ".claude-plugin/plugins/glab"
-      }
-    },
-    {
-      "name": "google-cloud-developer",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/google/skills.git",
-        "path": "plugins/cloud/google-cloud-developer"
-      },
-      "description": "Core Google Cloud guidance for coding agents: first-project onboarding, authentication and credential selection, and safety-critical validation for gcloud CLI commands. Includes the Google Developer Knowledge MCP server for grounded, up-to-date Google Cloud documentation."
-    },
-    {
-      "name": "google-cloud-storage",
-      "description": "Official Google Cloud Storage (GCS) plugin. Manage buckets and objects, transfer data, and configure MCP, FUSE, IAM, security, lifecycle rules, signed URLs, Terraform, and the CLI.",
-      "author": {
-        "name": "Google LLC"
-      },
-      "category": "deployment",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/gemini-cli-extensions/google-cloud-storage.git",
-        "sha": "fec332f39aea5433d00ef6bdefff1a15d75aeebd"
-      },
-      "homepage": "https://cloud.google.com/storage"
-    },
-    {
-      "name": "gopls-lsp",
-      "description": "Go language server for code intelligence and refactoring",
-      "version": "1.0.0",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/gopls-lsp"
-      },
-      "category": "development",
-      "strict": false,
-      "lspServers": {
-        "gopls": {
-          "command": "gopls",
-          "extensionToLanguage": {
-            ".go": "go"
-          }
-        }
-      }
-    },
-    {
-      "name": "handoff",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/handoff"
-      }
-    },
-    {
-      "name": "hf-cli",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/huggingface/skills.git",
-        "path": "skills/hf-cli"
-      },
-      "skills": "./",
-      "description": "Execute Hugging Face Hub operations using the hf CLI. Install additional Hugging Face skills, discover agent resources, download models/datasets, upload files, manage repos, and run cloud compute jobs."
-    },
-    {
-      "name": "hol-guard",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/hashgraph-online/hol-guard-plugin.git",
-        "path": "distributions/wshobson-agents",
-        "sha": "43b2dda59e9f07057c52e69fd7426188faae1488"
-      },
-      "description": "Local pre-execution security controls and pre-install scanning for AI agent tools, packages, skills, plugins, and MCP servers.",
-      "version": "0.1.0",
-      "author": {
-        "name": "Hashgraph Online",
-        "url": "https://github.com/hashgraph-online"
-      },
-      "homepage": "https://hol.org/guard",
-      "license": "Apache-2.0",
-      "category": "security",
-      "keywords": [
-        "hol-guard",
-        "ai-security",
-        "agent-security",
-        "plugin-security",
-        "mcp-security",
-        "supply-chain-security"
-      ]
-    },
-    {
-      "name": "huggingface-skills",
-      "description": "Build, train, evaluate, and use open source AI models, datasets, and spaces.",
-      "category": "development",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/huggingface/skills.git",
-        "sha": "cead19e10754e773bad24fecef83cb64be24094e"
-      },
-      "homepage": "https://github.com/huggingface/skills.git"
-    },
-    {
-      "name": "infra-ci-cd-turborepo-ci",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/agents-inc/skills.git",
-        "path": "dist/plugins/infra-ci-cd-turborepo-ci"
-      },
-      "description": "Turborepo CI pipelines with remote caching and affected detection",
-      "version": "2.0.0",
-      "author": {
-        "name": "@vince"
-      },
-      "category": "infra-ci-cd"
-    },
-    {
-      "name": "javascript-typescript",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/javascript-typescript"
-      },
-      "description": "JavaScript and TypeScript development with ES6+, Node.js, React, and modern web frameworks",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "jvm-languages",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/jvm-languages"
-      },
-      "description": "JVM language development including Java, Scala, and C# with enterprise patterns and frameworks",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "knowledge-catalog",
-      "source": {
-        "source": "github",
-        "repo": "gemini-cli-extensions/knowledge-catalog",
-        "ref": "0.5.3"
-      },
-      "description": "Skills for Knowledge Catalog."
-    },
-    {
-      "name": "kubernetes-operations",
-      "description": "Kubernetes manifest generation, networking configuration, security policies, observability setup, GitOps workflows, and auto-scaling",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/kubernetes-operations"
-      },
-      "category": "infrastructure",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "langchain-mcp",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/langchain-ai/langchain-plugins.git",
-        "path": "plugins/langchain-mcp"
-      },
-      "description": "LangChain Docs and Reference MCP servers for live documentation and API lookups.",
-      "author": {
-        "name": "LangChain"
-      }
-    },
-    {
-      "name": "langchain-skills",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/langchain-ai/langchain-skills.git",
-        "ref": "main"
-      },
-      "description": "Agent skills for building with LangChain, LangGraph, and Deep Agents (mirrored from langchain-ai/langchain-skills).",
-      "author": {
-        "name": "LangChain"
-      }
-    },
-    {
-      "name": "langsmith-mcp",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/langchain-ai/langchain-plugins.git",
-        "path": "plugins/langsmith-mcp"
-      },
-      "description": "LangSmith remote MCP server (OAuth) for querying traces, datasets, prompts, and experiments.",
-      "author": {
-        "name": "LangChain"
-      }
-    },
-    {
-      "name": "langsmith-skills",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/langchain-ai/langsmith-skills.git",
-        "ref": "main"
-      },
-      "description": "Agent skills for tracing, datasets, and evaluation with LangSmith (mirrored from langchain-ai/langsmith-skills).",
-      "author": {
-        "name": "LangChain"
-      }
-    },
-    {
-      "name": "llm-application-dev",
-      "description": "LLM application development with LangGraph, RAG systems, vector search, and AI agent architectures for Claude 4.6 and GPT-5.4",
-      "version": "2.0.6",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/llm-application-dev"
-      },
-      "category": "ai-ml",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "llm-finetuning",
-      "description": "Eval-gated LLM fine-tuning lifecycle (LoRA/QLoRA, DPO, GRPO/RLVR, vision SFT, quantized export). Use when fine-tuning an open-weights model end-to-end: building the eval harness first, selecting method and model, preparing data, training with Unsloth or TRL, gating checkpoints, and exporting GGUF/FP8.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/llm-finetuning"
-      },
-      "category": "ai-ml",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "machine-learning-ops",
-      "description": "ML model training pipelines, hyperparameter tuning, model deployment automation, experiment tracking, and MLOps workflows",
-      "version": "1.2.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/machine-learning-ops"
-      },
-      "category": "ai-ml",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "meigen-ai-design",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/meigen-ai-design"
-      },
-      "description": "AI image generation with creative workflow orchestration, prompt engineering, and curated inspiration library via MCP server",
-      "version": "1.0.9",
-      "author": {
-        "name": "MeiGen",
-        "url": "https://github.com/jau123"
-      },
-      "homepage": "https://github.com/jau123/MeiGen-AI-Design-MCP",
-      "license": "MIT",
-      "category": "creative"
-    },
-    {
-      "name": "mr-adversarial-review",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/mr-adversarial-review"
-      }
-    },
-    {
-      "name": "mr-guided-review",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/mr-guided-review"
       }
     },
     {
@@ -1401,148 +106,35 @@
       }
     },
     {
-      "name": "multi-platform-apps",
+      "name": "mr-adversarial-review",
       "source": {
         "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/multi-platform-apps"
-      },
-      "description": "Cross-platform application development coordinating web, iOS, Android, and desktop implementations",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "development"
-    },
-    {
-      "name": "nextjs",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/vercel/next.js.git",
-        "path": "skills"
-      },
-      "description": "Official Next.js skills: adopt and optimize Cache Components, adopt Partial Prefetching, and verify runtime behavior against a running dev server."
-    },
-    {
-      "name": "nixos-managing",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/michalzubkowicz/nixos-management-skill.git"
-      },
-      "description": "NixOS management skill \u2014 rebuild, configure, deploy, install, build images, monitor. Covers flakes, modules, secret management, VM management, disk imaging, remote deployment, impermanence, LUKS remote-unlock and Telegram/webhook alerting.",
-      "version": "0.2.0"
-    },
-    {
-      "name": "openai-developers",
-      "displayName": "OpenAI Developers",
-      "description": "Build with OpenAI APIs, Agents SDK, and ChatGPT Apps from Claude Code.",
-      "author": {
-        "name": "OpenAI"
-      },
-      "homepage": "https://developers.openai.com/",
-      "repository": "https://github.com/openai/openai-developers-for-claude",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/openai/openai-developers-for-claude.git",
-        "path": "plugins/openai-developers"
+        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
+        "path": ".claude-plugin/plugins/mr-adversarial-review"
       }
     },
     {
-      "name": "operating-kit",
+      "name": "gitlab-pipeline-watch",
       "source": {
         "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/operating-kit"
-      },
-      "description": "Portable operating method: session lifecycle agents, pre-ship code review, deploy with live verification and state doc update, and production log health check",
-      "version": "1.0.0",
-      "author": {
-        "name": "Sharrmavishal",
-        "url": "https://github.com/Sharrmavishal"
-      },
-      "homepage": "https://github.com/Sharrmavishal/operating-kit",
-      "license": "MIT",
-      "category": "workflows"
+        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
+        "path": ".claude-plugin/plugins/gitlab-pipeline-watch"
+      }
     },
     {
-      "name": "performance-testing-review",
+      "name": "commit-messages",
       "source": {
         "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/performance-testing-review"
-      },
-      "description": "Performance analysis, test coverage review, and AI-powered code quality assessment",
-      "version": "1.2.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "quality"
+        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
+        "path": ".claude-plugin/plugins/commit-messages"
+      }
     },
     {
-      "name": "playwright",
-      "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
-      "category": "testing",
+      "name": "stack-changes",
       "source": {
         "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "external_plugins/playwright"
-      },
-      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/external_plugins/playwright"
-    },
-    {
-      "name": "plugin-eval",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/plugin-eval"
-      },
-      "description": "Three-layer quality evaluation framework for Claude Code plugins with Elo ranking",
-      "version": "0.1.1",
-      "author": {
-        "name": "Seth Hobson"
-      },
-      "license": "MIT",
-      "category": "quality"
-    },
-    {
-      "name": "protect-mcp",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/protect-mcp"
-      },
-      "description": "Cedar policy enforcement + Ed25519 signed receipts for every Claude Code tool call. First cryptographic governance plugin \u2014 decisions are policy-gated before they run and every decision produces a tamper-evident receipt verifiable offline.",
-      "version": "0.1.1",
-      "author": {
-        "name": "Tom Farley",
-        "email": "tommy@scopeblind.com",
-        "url": "https://github.com/tomjwxf"
-      },
-      "homepage": "https://veritasacta.com",
-      "license": "MIT",
-      "category": "governance",
-      "keywords": [
-        "cedar",
-        "receipts",
-        "ed25519",
-        "policy",
-        "governance",
-        "audit",
-        "compliance"
-      ]
-    },
-    {
-      "name": "protobuf",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/bufbuild/claude-plugins.git",
-        "path": "plugins/protobuf"
+        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
+        "path": ".claude-plugin/plugins/stack-changes"
       }
     },
     {
@@ -1574,52 +166,8 @@
       }
     },
     {
-      "name": "python-development",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/python-development"
-      },
-      "description": "Modern Python development with Python 3.12+, Django, FastAPI, async patterns, and production best practices",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "review-agent-governance",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/review-agent-governance"
-      },
-      "description": "Require a human approval signal before an AI agent can post PR reviews, comments, merges, or writes to CI configuration. Joins protect-mcp and signed-audit-trails in the governance category; composes with protect-mcp for runtime enforcement.",
-      "version": "0.1.1",
-      "author": {
-        "name": "Tom Farley",
-        "email": "tommy@scopeblind.com",
-        "url": "https://github.com/tomjwxf"
-      },
-      "homepage": "https://veritasacta.com",
-      "license": "MIT",
-      "category": "governance",
-      "keywords": [
-        "review",
-        "governance",
-        "cedar",
-        "receipts",
-        "human-approval",
-        "pr-review",
-        "ci-guard"
-      ]
-    },
-    {
-      "name": "rust-analyzer-lsp",
-      "description": "Rust language server for code intelligence and analysis",
+      "name": "gopls-lsp",
+      "description": "Go language server for code intelligence and refactoring",
       "version": "1.0.0",
       "author": {
         "name": "Anthropic",
@@ -1628,343 +176,18 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/rust-analyzer-lsp"
+        "path": "plugins/gopls-lsp"
       },
       "category": "development",
       "strict": false,
       "lspServers": {
-        "rust-analyzer": {
-          "command": "rust-analyzer",
+        "gopls": {
+          "command": "gopls",
           "extensionToLanguage": {
-            ".rs": "rust"
+            ".go": "go"
           }
         }
       }
-    },
-    {
-      "name": "rust-skills",
-      "description": "38 skills covering ownership, concurrency, error handling, unsafe code, LSP code intelligence, and domain-specific patterns for Rust development",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/actionbook/rust-skills.git"
-      },
-      "category": "development"
-    },
-    {
-      "name": "security-guidance",
-      "description": "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF, hardcoded secrets, and 25+ other vulnerability classes.",
-      "version": "2.0.7",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/security-guidance"
-      },
-      "category": "security",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance"
-    },
-    {
-      "name": "security-scanning",
-      "description": "SAST analysis, dependency vulnerability scanning, OWASP Top 10 compliance, container security scanning, and automated security hardening",
-      "version": "1.3.2",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/security-scanning"
-      },
-      "category": "security",
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT"
-    },
-    {
-      "name": "sentry-skills",
-      "description": "Sentry-specific agent skills for code review, commits, and more",
-      "author": {
-        "name": "Sentry"
-      },
-      "source": {
-        "source": "url",
-        "url": "https://github.com/getsentry/skills.git"
-      },
-      "category": "productivity"
-    },
-    {
-      "name": "shared-monorepo-pnpm-workspaces",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/agents-inc/skills.git",
-        "path": "dist/plugins/shared-monorepo-pnpm-workspaces"
-      },
-      "description": "pnpm workspace protocol, filtering, catalogs, shared dependencies, publishing, and CI/CD for monorepo management",
-      "version": "4.0.0",
-      "author": {
-        "name": "@vince"
-      },
-      "category": "shared-monorepo"
-    },
-    {
-      "name": "shared-monorepo-turborepo",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/agents-inc/skills.git",
-        "path": "dist/plugins/shared-monorepo-turborepo"
-      },
-      "description": "Turborepo, workspaces, package architecture, @repo/* naming, exports, tree-shaking",
-      "version": "3.0.0",
-      "author": {
-        "name": "@vince"
-      },
-      "category": "shared-task-runner"
-    },
-    {
-      "name": "shell-scripting",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/shell-scripting"
-      },
-      "description": "Production-grade Bash scripting with defensive programming, POSIX compliance, and comprehensive testing",
-      "version": "1.2.3",
-      "author": {
-        "name": "Ryan Snodgrass",
-        "url": "https://github.com/rsnodgrass"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "ship-mate",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/ship-mate"
-      },
-      "description": "Your AI development teammate. Turns a story file into a shipped, reviewed, and tested feature via orchestrator \u2192 architect \u2192 developer \u2192 PR reviewer \u2192 QA \u2192 Playwright.",
-      "version": "1.0.1",
-      "author": {
-        "name": "Pranay Yadav",
-        "email": "pranayyadav08@gmail.com",
-        "url": "https://github.com/gh0sty02"
-      },
-      "license": "MIT",
-      "category": "workflows",
-      "keywords": [
-        "pipeline",
-        "automation",
-        "orchestration",
-        "code-review",
-        "qa",
-        "playwright",
-        "multi-agent",
-        "dev-workflow"
-      ]
-    },
-    {
-      "name": "signed-audit-trails",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/signed-audit-trails"
-      },
-      "description": "Teaching skill: cookbook-style walkthrough for signed audit trails on every Claude Code tool call. Cedar policy, Ed25519 receipts, offline verification, CI/CD integration, SLSA composition. Pairs with the protect-mcp runtime plugin.",
-      "version": "0.1.1",
-      "author": {
-        "name": "Tom Farley",
-        "email": "tommy@scopeblind.com",
-        "url": "https://github.com/tomjwxf"
-      },
-      "homepage": "https://veritasacta.com",
-      "license": "MIT",
-      "category": "governance",
-      "keywords": [
-        "tutorial",
-        "skill",
-        "recipe",
-        "audit",
-        "governance",
-        "cedar",
-        "receipts",
-        "ed25519"
-      ]
-    },
-    {
-      "name": "skill-creator",
-      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis.",
-      "author": {
-        "name": "Anthropic",
-        "email": "support@anthropic.com"
-      },
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/anthropics/claude-plugins-official.git",
-        "path": "plugins/skill-creator"
-      },
-      "category": "development",
-      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator"
-    },
-    {
-      "name": "skill-forge-essentials",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/skill-forge-essentials"
-      },
-      "description": "Behavioral skills for AI-specific failure patterns: hidden code debt from agent generation and context compaction amnesia via behavioral self-enforcement",
-      "version": "1.0.0",
-      "author": {
-        "name": "Adit Jain",
-        "url": "https://github.com/Adit-Jain-srm"
-      },
-      "license": "MIT",
-      "category": "quality"
-    },
-    {
-      "name": "stack-changes",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://gitlab.com/gitlab-org/ai/skills.git",
-        "path": ".claude-plugin/plugins/stack-changes"
-      }
-    },
-    {
-      "name": "superpowers",
-      "description": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.",
-      "category": "development",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/obra/superpowers.git",
-        "sha": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797"
-      },
-      "homepage": "https://github.com/obra/superpowers.git"
-    },
-    {
-      "name": "superself",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/superself"
-      },
-      "description": "Drive the Superself `self` CLI: version control for a project's state (goals, decisions, work units, reports) kept outside the code repo, so a session reads context at start, reports with evidence, and the next session picks up where this one left off",
-      "version": "1.0.0",
-      "author": {
-        "name": "fxylabs",
-        "url": "https://github.com/fxylabs"
-      },
-      "homepage": "https://github.com/fxylabs/superself",
-      "license": "Apache-2.0",
-      "category": "workflows"
-    },
-    {
-      "name": "systems-programming",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/systems-programming"
-      },
-      "description": "Systems programming with Rust, Go, C, and C++ for performance-critical and low-level development",
-      "version": "1.2.3",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "languages"
-    },
-    {
-      "name": "tdd-workflows",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/tdd-workflows"
-      },
-      "description": "Test-driven development methodology with red-green-refactor cycles and code review",
-      "version": "1.3.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "workflows"
-    },
-    {
-      "name": "team-collaboration",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/team-collaboration"
-      },
-      "description": "Team workflows, issue management, standup automation, and developer experience optimization",
-      "version": "1.2.1",
-      "author": {
-        "name": "Seth Hobson",
-        "email": "seth@major7apps.com"
-      },
-      "homepage": "https://github.com/wshobson/agents",
-      "license": "MIT",
-      "category": "utilities"
-    },
-    {
-      "name": "terraform",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/hashicorp/agent-skills.git",
-        "path": "plugins/terraform"
-      },
-      "description": "Terraform skills for configuration, modules, providers, tests, imports, stacks, and policy.",
-      "version": "1.0.0",
-      "author": {
-        "name": "HashiCorp"
-      },
-      "category": "integration",
-      "license": "MPL-2.0",
-      "strict": false
-    },
-    {
-      "name": "testing-tdd",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/jagreehal/jagreehal-claude-skills.git"
-      },
-      "description": "TDD workflow and testing strategies: red-green-refactor, test pyramid, mutation testing, performance testing",
-      "version": "1.3.0",
-      "license": "MIT",
-      "keywords": [
-        "tdd",
-        "testing",
-        "vitest",
-        "stryker",
-        "mutation-testing",
-        "performance",
-        "test-driven-development"
-      ],
-      "category": "development",
-      "skills": [
-        "./skills/tdd-workflow",
-        "./skills/testing-strategy",
-        "./skills/writing-tests",
-        "./skills/mutation-testing",
-        "./skills/performance-testing"
-      ]
-    },
-    {
-      "name": "ty-python-lsp",
-      "description": "Wires up Astral's ty, an extremely fast Python type checker, as an LSP server for Claude Code's built-in LSP tool. On .py / .pyi / .pyw files Claude can use hover (inferred types and docstrings), go-to-definition, go-to-implementation, find-references, document and workspace symbol search, and call hierarchy.\nConfiguration is auto-detected from pyproject.toml; no extra LSP settings required. Requires ty on PATH (uv tool install ty or\npip install ty).",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/andres-ortizl/ty-lsp-claude-code-plugin.git",
-        "sha": "b1995d1739dc635b76e534dc25c9884d8eaad747"
-      },
-      "homepage": "https://github.com/andres-ortizl/ty-lsp-claude-code-plugin/blob/main/README.md"
     },
     {
       "name": "typescript-lsp",
@@ -2001,40 +224,58 @@
       }
     },
     {
-      "name": "typescript-patterns",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/jagreehal/jagreehal-claude-skills.git"
+      "name": "rust-analyzer-lsp",
+      "description": "Rust language server for code intelligence and analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
       },
-      "description": "Core TypeScript architecture: fn(args, deps), Result types, Zod validation, observability, and resilience patterns",
-      "version": "1.3.0",
-      "license": "MIT",
-      "keywords": [
-        "typescript",
-        "patterns",
-        "dependency-injection",
-        "result-types",
-        "zod",
-        "architecture",
-        "observability"
-      ],
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/rust-analyzer-lsp"
+      },
       "category": "development",
-      "skills": [
-        "./skills/fn-args-deps",
-        "./skills/validation-boundary",
-        "./skills/result-types",
-        "./skills/strict-typescript",
-        "./skills/config-management",
-        "./skills/api-design",
-        "./skills/pattern-enforcement",
-        "./skills/resilience",
-        "./skills/observability"
-      ]
+      "strict": false,
+      "lspServers": {
+        "rust-analyzer": {
+          "command": "rust-analyzer",
+          "extensionToLanguage": {
+            ".rs": "rust"
+          }
+        }
+      }
     },
     {
-      "name": "ui-design",
-      "description": "Comprehensive UI/UX design plugin for mobile (iOS, Android, React Native) and web applications with design systems, accessibility, and modern patterns",
-      "version": "1.0.5",
+      "name": "astral",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/astral-sh/claude-code-plugins.git",
+        "path": "plugins/astral"
+      },
+      "description": "Skills for working with Python using Astral tools."
+    },
+    {
+      "name": "terraform",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/hashicorp/agent-skills.git",
+        "path": "plugins/terraform"
+      },
+      "description": "Terraform skills for configuration, modules, providers, tests, imports, stacks, and policy.",
+      "version": "1.0.0",
+      "author": {
+        "name": "HashiCorp"
+      },
+      "category": "integration",
+      "license": "MPL-2.0",
+      "strict": false
+    },
+    {
+      "name": "kubernetes-operations",
+      "description": "Kubernetes manifest generation, networking configuration, security policies, observability setup, GitOps workflows, and auto-scaling",
+      "version": "1.2.3",
       "author": {
         "name": "Seth Hobson",
         "email": "seth@major7apps.com"
@@ -2042,39 +283,123 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/ui-design"
+        "path": "plugins/kubernetes-operations"
       },
-      "category": "development",
+      "category": "infrastructure",
       "homepage": "https://github.com/wshobson/agents",
       "license": "MIT"
     },
     {
-      "name": "unit-testing",
+      "name": "google-cloud-developer",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/google/skills.git",
+        "path": "plugins/cloud/google-cloud-developer"
+      },
+      "description": "Core Google Cloud guidance for coding agents: first-project onboarding, authentication and credential selection, and safety-critical validation for gcloud CLI commands. Includes the Google Developer Knowledge MCP server for grounded, up-to-date Google Cloud documentation."
+    },
+    {
+      "name": "machine-learning-ops",
+      "description": "ML model training pipelines, hyperparameter tuning, model deployment automation, experiment tracking, and MLOps workflows",
+      "version": "1.2.2",
+      "author": {
+        "name": "Seth Hobson",
+        "email": "seth@major7apps.com"
+      },
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/wshobson/agents.git",
-        "path": "plugins/unit-testing"
+        "path": "plugins/machine-learning-ops"
       },
-      "description": "Unit and integration test automation for Python and JavaScript with debugging support",
-      "version": "1.2.1",
+      "category": "ai-ml",
+      "homepage": "https://github.com/wshobson/agents",
+      "license": "MIT"
+    },
+    {
+      "name": "llm-finetuning",
+      "description": "Eval-gated LLM fine-tuning lifecycle (LoRA/QLoRA, DPO, GRPO/RLVR, vision SFT, quantized export). Use when fine-tuning an open-weights model end-to-end: building the eval harness first, selecting method and model, preparing data, training with Unsloth or TRL, gating checkpoints, and exporting GGUF/FP8.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Seth Hobson",
+        "email": "seth@major7apps.com"
+      },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/llm-finetuning"
+      },
+      "category": "ai-ml",
+      "homepage": "https://github.com/wshobson/agents",
+      "license": "MIT"
+    },
+    {
+      "name": "huggingface-skills",
+      "description": "Build, train, evaluate, and use open source AI models, datasets, and spaces.",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/huggingface/skills.git",
+        "sha": "cead19e10754e773bad24fecef83cb64be24094e"
+      },
+      "homepage": "https://github.com/huggingface/skills.git"
+    },
+    {
+      "name": "protobuf",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/bufbuild/claude-plugins.git",
+        "path": "plugins/protobuf"
+      }
+    },
+    {
+      "name": "security-guidance",
+      "description": "Security review for Claude-generated code. Pattern-based warnings on edits, LLM-powered diff review on Stop, and an agentic commit reviewer that catches injection, XSS, SSRF, hardcoded secrets, and 25+ other vulnerability classes.",
+      "version": "2.0.7",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/security-guidance"
+      },
+      "category": "security",
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance"
+    },
+    {
+      "name": "security-scanning",
+      "description": "SAST analysis, dependency vulnerability scanning, OWASP Top 10 compliance, container security scanning, and automated security hardening",
+      "version": "1.3.2",
+      "author": {
+        "name": "Seth Hobson",
+        "email": "seth@major7apps.com"
+      },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/security-scanning"
+      },
+      "category": "security",
+      "homepage": "https://github.com/wshobson/agents",
+      "license": "MIT"
+    },
+    {
+      "name": "c4-architecture",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/c4-architecture"
+      },
+      "description": "Comprehensive C4 architecture documentation workflow with bottom-up code analysis, component synthesis, container mapping, and context diagram generation",
+      "version": "1.0.1",
       "author": {
         "name": "Seth Hobson",
         "email": "seth@major7apps.com"
       },
       "homepage": "https://github.com/wshobson/agents",
       "license": "MIT",
-      "category": "testing"
-    },
-    {
-      "name": "vercel",
-      "description": "Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.",
-      "category": "deployment",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/vercel/vercel-plugin.git",
-        "sha": "11c32588786a9d49791372657433b88d49561874"
-      },
-      "homepage": "https://github.com/vercel/vercel-plugin"
+      "category": "documentation"
     }
   ]
 }
