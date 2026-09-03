@@ -8,20 +8,6 @@
   },
   "plugins": [
     {
-      "name": "mindclade-plugin-policy",
-      "description": "Mindclade's plugin routing policy as a skill: which plugin handles which task, and which bundled skills contradict Production Plan v3.1.",
-      "author": {
-        "name": "Mindclade"
-      },
-      "category": "development",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/mindclade/mindclade-claude-plugins.git",
-        "path": "plugins/mindclade-plugin-policy"
-      },
-      "homepage": "https://github.com/mindclade/mindclade-claude-plugins"
-    },
-    {
       "name": "superpowers",
       "description": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.",
       "category": "development",

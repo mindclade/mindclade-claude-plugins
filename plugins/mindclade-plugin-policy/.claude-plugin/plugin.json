@@ -1,0 +1,13 @@
+{
+  "name": "mindclade-plugin-policy",
+  "description": "Mindclade's plugin routing policy. Decides which plugin or skill handles a task across the protocol, SDK Foundry, and product monorepo, and which bundled skills to never load because they contradict Production Plan v3.1.",
+  "version": "1.3.0",
+  "author": {
+    "name": "Mindclade",
+    "email": "robpearc@mindclade.com"
+  },
+  "repository": "https://github.com/mindclade/mindclade-claude-plugins",
+  "license": "UNLICENSED",
+  "keywords": ["mindclade", "routing", "policy", "governance", "protobuf", "sdk-foundry", "gcp"],
+  "skills": "./skills"
+}
