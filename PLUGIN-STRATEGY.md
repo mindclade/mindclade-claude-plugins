@@ -3,7 +3,7 @@
 **v1.0 — final.** Decisions below are settled; each is reversible, and §8 records what was
 decided and why so a later change is an amendment rather than a rediscovery.
 
-Routing policy for the 32 plugins in `mindclade/mindclade-claude-plugins`. Paste into
+Routing policy for the 33 plugins in `mindclade/mindclade-claude-plugins`. Paste into
 `CLAUDE.md`, or reference it from there with `@PLUGIN-STRATEGY.md`.
 
 Authority for every routing decision below is
@@ -14,7 +14,7 @@ Authority for every routing decision below is
 ## 0. What is actually loaded
 
 Syncing this marketplace **adds a source; it does not disable anything.** As of the last check you
-have **117 plugins active — 87 of them outside this curated set.** Until those are disabled in
+have **117 plugins active — 86 of them outside this curated set.** Until those are disabled in
 **Settings → Customize plugins**, Claude can reach `kubernetes-operations`, `gitlab`, `rust-skills`,
 `llm-application-dev`, `comprehensive-review` and 82 others that this policy deliberately excludes.
 
@@ -76,7 +76,9 @@ route from the table.
 | Building a feature end to end | `/feature-dev` (`code-architect` → `code-explorer` → `code-reviewer`) |
 | Python: uv locks, ruff, ty | `astral` |
 | Go / Python / Rust / TypeScript navigation, refs, rename | the matching `*-lsp` plugin (passive) |
-| Next.js Studio v1 work | `nextjs` |
+| Next.js Studio v1 — framework mechanics, caching, prefetching | `nextjs` |
+| Studio v1 — visual design, typography, aesthetic direction | `claude-api:frontend-design` |
+| Outbox/inbox, sagas, CQRS, event store, projections, command idempotency | `backend-development` |
 | Training control plane, ML pipelines, checkpoints, MLOps | `machine-learning-ops` |
 | Fine-tuning method choice, eval harness, LoRA/GRPO, checkpoint promotion | `llm-finetuning` |
 | HF datasets, transformers, TRL, model hub, local models | `huggingface-skills` |
@@ -102,6 +104,9 @@ the task has been misread.
 | `huggingface-skills:hf-cloud-*` (6 skills) | AWS SageMaker. Wrong cloud — use `google-cloud-developer`. |
 | `machine-learning-ops:recsys-pipeline-architect` | Not a recommender-systems product. |
 | `openai-developers:build-chatgpt-app`, `:chatgpt-app-submission` | Not building ChatGPT apps. |
+| `backend-development:performance-engineer` | Duplicate of `application-performance`'s agent. Use the plugin's 9 skills, not this agent. |
+| `backend-development:security-auditor` | Duplicate of `security-scanning`'s agent. |
+| `ui-design`, `frontend-react`, `typescript-patterns` | 512 KB and 443 KB payloads for a read-only internal Studio. 5 of `ui-design`'s 9 skills are mobile; `frontend-react` and `typescript-patterns` ship an identical 46-skill payload from the same repo, most of it general workflow that duplicates `superpowers`. |
 | `base44` (whole plugin) | Hosted app-builder with its own CLI, SDK, and deploy path. The plan commits to Buf contracts, hand-written SDK façades, an IR-first OpenAPI projector, and Cloud Run via Terraform. No seam for it, and §5.3 prohibits the dependency. Revisit only as a plan amendment with an ADR. |
 | `claude-api` office and design skills (`pptx`, `xlsx`, `docx`, `pdf`, `algorithmic-art`, `brand-guidelines`, `canvas-design`, `slack-gif-creator`, `theme-factory`, `web-artifacts-builder`, `internal-comms`, `academy-guide`, `discernment-nudge`) | Carried only because the plugin is monolithic. 16 of its 19 skills are dead weight. |
 
@@ -153,7 +158,7 @@ Plugin count is the wrong lever. Measured always-on context, from the local plug
 | Set | Always-on | Heaviest member |
 |---|---|---|
 | Live, 117 plugins | ≥ 18,793 | `data-engineering` — 6,060 |
-| This policy, 32 plugins | ≥ 8,736 | `huggingface-skills` — 5,111 |
+| This policy, 33 plugins | ≥ 8,736 | `huggingface-skills` — 5,111 |
 
 `huggingface-skills` is 58% of this set's measured cost on its own. `terraform`, `github`,
 `security-guidance` and all four language servers are **0**.
@@ -165,27 +170,30 @@ Anything above ~1,000 needs a reason beyond "might be useful".
 
 | # | Decision | Rationale | Reversal cost |
 |---|---|---|---|
-| 1 | 32 plugins, not 133 | 133 was everything installed locally, most of it for stacks Mindclade does not use | Low — full manifest is in the repo's first commit |
+| 1 | 33 plugins, not 133 | 133 was everything installed locally, most of it for stacks Mindclade does not use | Low — full manifest is in the repo's first commit |
 | 2 | GitHub tooling over GitLab | GitLab appears 0 times in plan v3.1; topology is `mindclade/mindclade` + `mindclade/sdk` on GitHub Actions | Low — re-add `gitlab`, restore the 5 cut GitLab plugins |
 | 3 | No `kubernetes-operations` | Kubernetes appears 0 times; the plan deploys to Cloud Run and Cloud Run Jobs | Low, but revisit if the `gitops/` ArgoCD platform survives migration |
 | 4 | Keep `huggingface-skills` despite 5,111 always-on | Protein language modelling is the product; HF is that ecosystem | Free — dropping it takes the set to ~3,600 always-on |
-| 5 | Keep `claude-api` despite 16 irrelevant skills | Carried for `claude-api`, `mcp-builder`, `skill-creator`; the plugin is monolithic and cannot be split | Free — drop it and lose those three |
+| 5 | Keep `claude-api` despite 16 irrelevant skills | Carried for `claude-api`, `mcp-builder`, `skill-creator` **and `frontend-design`** — Anthropic's own design skill, best in class; the plugin is monolithic and cannot be split | Free — drop it and lose those four |
 | 6 | Exclude `base44` | Contradicts the contract-first, self-hosted SDK architecture | Requires an ADR, not a plugin change |
 | 7 | Exclude `adr-writer` despite 81 ADR mentions | Its MCP server fails to connect; `documentation-generation` covers ADRs | Low — re-add once auth works |
+| 9 | No separate frontend-design plugin | Anthropic's `frontend-design` skill is already inside `claude-api`; the standalone plugin would duplicate it and break the collision-free property | Free |
+| 10 | `protobuf` (Buf) is the protos plugin | Its scope — `.proto`, `buf.yaml`, `buf.gen.yaml`, gRPC/Connect, protovalidate, schema evolution — matches the plan's stack line exactly | Nothing better exists |
+| 11 | Added `backend-development` | Its `event-store-design`, `projection-patterns`, `saga-orchestration`, `cqrs-implementation` skills map onto plan §11.5–11.8, the thinnest-covered area | Low — two agents routed away as duplicates |
 | 8 | Exclude `rust-skills` | `UserPromptSubmit` hook injects a routing framework into every prompt regardless of topic | Low, but the constant cost returns |
 
 ## 9. Appendix — plugins to disable
 
-The 87 currently live and outside this set. Disable in **Settings → Customize plugins**; the
+The 86 currently live and outside this set. Disable in **Settings → Customize plugins**; the
 curation has no effect until this is done.
 
 **Contradicts the plan** (16)
 
 `kubernetes-operations` `gitlab` `cloud-infrastructure` `infra-ci-cd-turborepo-ci` `shared-monorepo-turborepo` `shared-monorepo-pnpm-workspaces` `alloydb` `alloydb-omni` `bigtable` `dataproc` `knowledge-catalog` `dgx-spark-ops` `nixos-managing` `cloudflare` `ckeditor` `meigen-ai-design`
 
-**Overlaps a routed plugin** (41)
+**Overlaps a routed plugin** (40)
 
-`comprehensive-review` `code-documentation` `code-refactoring` `codebase-cleanup` `performance-testing-review` `error-debugging` `debugging-toolkit` `database-design` `database-cloud-optimization` `api-testing-observability` `api-scaffolding` `backend-development` `backend-api-security` `git-pr-workflows` `tdd-workflows` `testing-tdd` `unit-testing` `full-stack-orchestration` `deployment-strategies` `deployment-validation` `dependency-management` `framework-migration` `context-management` `agent-orchestration` `skill-creator` `code-simplifier` `data-validation-suite` `documentation-standards` `team-collaboration` `developer-essentials` `conductor` `operating-kit` `ship-mate` `compound-engineering` `superself` `skill-forge-essentials` `before-you-build` `claude-code-setup` `plugin-eval` `adr-writer` `avoid-ai-writing`
+`comprehensive-review` `code-documentation` `code-refactoring` `codebase-cleanup` `performance-testing-review` `error-debugging` `debugging-toolkit` `database-design` `database-cloud-optimization` `api-testing-observability` `api-scaffolding` `backend-api-security` `git-pr-workflows` `tdd-workflows` `testing-tdd` `unit-testing` `full-stack-orchestration` `deployment-strategies` `deployment-validation` `dependency-management` `framework-migration` `context-management` `agent-orchestration` `skill-creator` `code-simplifier` `data-validation-suite` `documentation-standards` `team-collaboration` `developer-essentials` `conductor` `operating-kit` `ship-mate` `compound-engineering` `superself` `skill-forge-essentials` `before-you-build` `claude-code-setup` `plugin-eval` `adr-writer` `avoid-ai-writing`
 
 **Wrong stack or domain** (29)
 

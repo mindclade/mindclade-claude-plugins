@@ -1,6 +1,6 @@
 # mindclade-claude-plugins
 
-A Claude Code marketplace of **32 plugins**, curated against
+A Claude Code marketplace of **33 plugins**, curated against
 *Mindclade Authoritative Protocol, SDK Foundry, and Product Monorepo Production Plan v3.1*.
 
 The plan's stack line (Part II, Global implementation constraints) is the selection authority:
