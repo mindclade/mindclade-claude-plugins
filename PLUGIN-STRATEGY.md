@@ -83,7 +83,7 @@ route from the table.
 | Fine-tuning method choice, eval harness, LoRA/GRPO, checkpoint promotion | `llm-finetuning` |
 | HF datasets, transformers, TRL, model hub, local models | `huggingface-skills` |
 | Building an Agent SDK app, verifying one | `agent-sdk-dev` |
-| Claude API usage, model ids, pricing, caching, MCP server authoring | `claude-api:claude-api`, `claude-api:mcp-builder` |
+| Claude API usage, model ids, pricing, caching | `claude-api:claude-api` |
 | OpenAI API usage in the codebase | `openai-developers:openai-docs`, `:openai-api-troubleshooting` |
 | Threat modelling, STRIDE, SAST config, attack trees, supply-chain review | `security-scanning` |
 | Latency, tracing, OpenTelemetry, SLOs, observability | `application-performance` |
@@ -111,6 +111,8 @@ the task has been misread.
 | `compound-engineering` (whole plugin) | 33 skills, ~12 MB. Roughly a third duplicate `superpowers` one-for-one (`ce-brainstorm`, `ce-plan`, `ce-work`, `ce-debug`, `ce-code-review`, `ce-worktree`, `ce-handoff`). Another third are product and marketing surfaces Mindclade has no use for (`ce-strategy`, `ce-product-pulse`, `ce-promote`, `ce-sweep`, `ce-riffrec-feedback-analysis`, `ce-test-xcode`). Only `ce-babysit-pr` and `ce-resolve-pr-feedback` are genuinely additive, and Claude Code's native `/autofix-pr` already covers both. |
 | `compound-engineering:lfg` | Named separately because it is a **guardrail violation, not just overlap**: it "pushes and opens a PR without stopping", hands-off with no check-ins. §6 of this policy requires per-action approval for anything that reaches a remote. |
 | `compound-engineering:ce-proof` | Publishes markdown to an external service. The monorepo is private behind a public leakage gate (§13.6); an unreviewed external publish path is exactly what that gate exists to stop. |
+| `mcp-server-dev` (do not install) and `claude-api:mcp-builder` | **§18 explicit non-goal for first GA:** *"Generated MCP servers, Terraform providers, or general-purpose product CLIs."* MCP appears exactly **once** in the 873 KB plan — in that non-goals list. Mindclade *consumes* MCP servers (`github`, `google-cloud-developer`, `huggingface-skills`); building one is out of scope until a post-GA vertical plan says otherwise. |
+| `terraform` provider-authoring skills (9 of 16) | `new-terraform-provider`, `provider-configuration`, `provider-docs`, `provider-resources`, `provider-actions`, `provider-ephemeral-resources`, `provider-framework-migration`, `provider-test-patterns`, `run-acceptance-tests` are all Plugin Framework provider *development* — the same §18 non-goal. Route only the consumer-side six: `refactor-module`, `terraform-stacks`, `terraform-style-guide`, `terraform-test`, `terraform-policy`, `terraform-search-import`. |
 | `base44` (whole plugin) | Hosted app-builder with its own CLI, SDK, and deploy path. The plan commits to Buf contracts, hand-written SDK façades, an IR-first OpenAPI projector, and Cloud Run via Terraform. No seam for it, and §5.3 prohibits the dependency. Revisit only as a plan amendment with an ADR. |
 | `claude-api` office and design skills (`pptx`, `xlsx`, `docx`, `pdf`, `algorithmic-art`, `brand-guidelines`, `canvas-design`, `slack-gif-creator`, `theme-factory`, `web-artifacts-builder`, `internal-comms`, `academy-guide`, `discernment-nudge`) | Carried only because the plugin is monolithic. 16 of its 19 skills are dead weight. |
 
@@ -178,7 +180,7 @@ Anything above ~1,000 needs a reason beyond "might be useful".
 | 2 | GitHub tooling over GitLab | GitLab appears 0 times in plan v3.1; topology is `mindclade/mindclade` + `mindclade/sdk` on GitHub Actions | Low — re-add `gitlab`, restore the 5 cut GitLab plugins |
 | 3 | No `kubernetes-operations` | Kubernetes appears 0 times; the plan deploys to Cloud Run and Cloud Run Jobs | Low, but revisit if the `gitops/` ArgoCD platform survives migration |
 | 4 | Keep `huggingface-skills` despite 5,111 always-on | Protein language modelling is the product; HF is that ecosystem | Free — dropping it takes the set to ~3,600 always-on |
-| 5 | Keep `claude-api` despite 16 irrelevant skills | Carried for `claude-api`, `mcp-builder`, `skill-creator` **and `frontend-design`** — Anthropic's own design skill, best in class; the plugin is monolithic and cannot be split | Free — drop it and lose those four |
+| 5 | Keep `claude-api` despite 16 irrelevant skills | Carried for `claude-api` and `frontend-design` (Anthropic's own design skill, best in class), plus `skill-creator`. **Not** for `mcp-builder` — §18 makes MCP servers a non-goal, correcting the earlier rationale. Monolithic; cannot be split | Free — drop it and lose those three |
 | 6 | Exclude `base44` | Contradicts the contract-first, self-hosted SDK architecture | Requires an ADR, not a plugin change |
 | 7 | Exclude `adr-writer` despite 81 ADR mentions | Its MCP server fails to connect; `documentation-generation` covers ADRs | Low — re-add once auth works |
 | 9 | No separate frontend-design plugin | Anthropic's `frontend-design` skill is already inside `claude-api`; the standalone plugin would duplicate it and break the collision-free property | Free |
@@ -186,6 +188,8 @@ Anything above ~1,000 needs a reason beyond "might be useful".
 | 11 | Added `backend-development` | Its `event-store-design`, `projection-patterns`, `saga-orchestration`, `cqrs-implementation` skills map onto plan §11.5–11.8, the thinnest-covered area | Low — two agents routed away as duplicates |
 | 12 | Exclude `api-batch-processor` | Prescribes Redis progress, Bull/Celery/SQS and Node workers against a plan that mandates `operation_events` in-transaction, a Pub/Sub outbox, Go workers and fencing tokens | Should not be reversed; it contradicts §11.5–11.6 |
 | 13 | Exclude `compound-engineering` | 33 skills / ~12 MB; ~1/3 duplicates `superpowers`, ~1/3 is product-marketing surface, and `lfg` violates the release guardrail | Low — but re-check `ce-babysit-pr` only if `/autofix-pr` proves insufficient |
+| 14 | Exclude `mcp-server-dev` and route away from `mcp-builder` | §18 lists generated MCP servers as an explicit non-goal for first GA; MCP appears once in the plan, in that list | Revisit only in a post-GA vertical plan |
+| 15 | Route away from 9 of `terraform`'s 16 skills | They cover authoring a Terraform provider with the Plugin Framework — the same §18 non-goal. Only the 6 consumer-side skills apply | None; the plugin stays for those six |
 | 8 | Exclude `rust-skills` | `UserPromptSubmit` hook injects a routing framework into every prompt regardless of topic | Low, but the constant cost returns |
 
 ## 9. Appendix — plugins to disable
