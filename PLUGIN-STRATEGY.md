@@ -1,5 +1,8 @@
 # Mindclade plugin use strategy
 
+**v1.0 — final.** Decisions below are settled; each is reversible, and §8 records what was
+decided and why so a later change is an amendment rather than a rediscovery.
+
 Routing policy for the 32 plugins in `mindclade/mindclade-claude-plugins`. Paste into
 `CLAUDE.md`, or reference it from there with `@PLUGIN-STRATEGY.md`.
 
@@ -99,6 +102,7 @@ the task has been misread.
 | `huggingface-skills:hf-cloud-*` (6 skills) | AWS SageMaker. Wrong cloud — use `google-cloud-developer`. |
 | `machine-learning-ops:recsys-pipeline-architect` | Not a recommender-systems product. |
 | `openai-developers:build-chatgpt-app`, `:chatgpt-app-submission` | Not building ChatGPT apps. |
+| `base44` (whole plugin) | Hosted app-builder with its own CLI, SDK, and deploy path. The plan commits to Buf contracts, hand-written SDK façades, an IR-first OpenAPI projector, and Cloud Run via Terraform. No seam for it, and §5.3 prohibits the dependency. Revisit only as a plan amendment with an ADR. |
 | `claude-api` office and design skills (`pptx`, `xlsx`, `docx`, `pdf`, `algorithmic-art`, `brand-guidelines`, `canvas-design`, `slack-gif-creator`, `theme-factory`, `web-artifacts-builder`, `internal-comms`, `academy-guide`, `discernment-nudge`) | Carried only because the plugin is monolithic. 16 of its 19 skills are dead weight. |
 
 The `gitops/` estate repo still uses ArgoCD, kustomize, and the GPU operator. That predates the plan.
@@ -138,3 +142,56 @@ Do not spawn a team for work one agent can do. Do not spawn an agent for work on
   stop and say so rather than working around it.
 - `github` MCP auth is currently broken (`Authorization header is badly formatted`). If a GitHub
   operation fails, report it — do not fall back to shelling out with unreviewed credentials.
+
+---
+
+## 7. Token budget
+
+Plugin count is the wrong lever. Measured always-on context, from the local plugin catalog
+(28 of 117 plugins priced, so both figures are floors):
+
+| Set | Always-on | Heaviest member |
+|---|---|---|
+| Live, 117 plugins | ≥ 18,793 | `data-engineering` — 6,060 |
+| This policy, 32 plugins | ≥ 8,736 | `huggingface-skills` — 5,111 |
+
+`huggingface-skills` is 58% of this set's measured cost on its own. `terraform`, `github`,
+`security-guidance` and all four language servers are **0**.
+
+**Rule:** before adding a plugin, check its `always_on` figure with `claude plugin details <name>`.
+Anything above ~1,000 needs a reason beyond "might be useful".
+
+## 8. Decision record
+
+| # | Decision | Rationale | Reversal cost |
+|---|---|---|---|
+| 1 | 32 plugins, not 133 | 133 was everything installed locally, most of it for stacks Mindclade does not use | Low — full manifest is in the repo's first commit |
+| 2 | GitHub tooling over GitLab | GitLab appears 0 times in plan v3.1; topology is `mindclade/mindclade` + `mindclade/sdk` on GitHub Actions | Low — re-add `gitlab`, restore the 5 cut GitLab plugins |
+| 3 | No `kubernetes-operations` | Kubernetes appears 0 times; the plan deploys to Cloud Run and Cloud Run Jobs | Low, but revisit if the `gitops/` ArgoCD platform survives migration |
+| 4 | Keep `huggingface-skills` despite 5,111 always-on | Protein language modelling is the product; HF is that ecosystem | Free — dropping it takes the set to ~3,600 always-on |
+| 5 | Keep `claude-api` despite 16 irrelevant skills | Carried for `claude-api`, `mcp-builder`, `skill-creator`; the plugin is monolithic and cannot be split | Free — drop it and lose those three |
+| 6 | Exclude `base44` | Contradicts the contract-first, self-hosted SDK architecture | Requires an ADR, not a plugin change |
+| 7 | Exclude `adr-writer` despite 81 ADR mentions | Its MCP server fails to connect; `documentation-generation` covers ADRs | Low — re-add once auth works |
+| 8 | Exclude `rust-skills` | `UserPromptSubmit` hook injects a routing framework into every prompt regardless of topic | Low, but the constant cost returns |
+
+## 9. Appendix — plugins to disable
+
+The 87 currently live and outside this set. Disable in **Settings → Customize plugins**; the
+curation has no effect until this is done.
+
+**Contradicts the plan** (16)
+
+`kubernetes-operations` `gitlab` `cloud-infrastructure` `infra-ci-cd-turborepo-ci` `shared-monorepo-turborepo` `shared-monorepo-pnpm-workspaces` `alloydb` `alloydb-omni` `bigtable` `dataproc` `knowledge-catalog` `dgx-spark-ops` `nixos-managing` `cloudflare` `ckeditor` `meigen-ai-design`
+
+**Overlaps a routed plugin** (41)
+
+`comprehensive-review` `code-documentation` `code-refactoring` `codebase-cleanup` `performance-testing-review` `error-debugging` `debugging-toolkit` `database-design` `database-cloud-optimization` `api-testing-observability` `api-scaffolding` `backend-development` `backend-api-security` `git-pr-workflows` `tdd-workflows` `testing-tdd` `unit-testing` `full-stack-orchestration` `deployment-strategies` `deployment-validation` `dependency-management` `framework-migration` `context-management` `agent-orchestration` `skill-creator` `code-simplifier` `data-validation-suite` `documentation-standards` `team-collaboration` `developer-essentials` `conductor` `operating-kit` `ship-mate` `compound-engineering` `superself` `skill-forge-essentials` `before-you-build` `claude-code-setup` `plugin-eval` `adr-writer` `avoid-ai-writing`
+
+**Wrong stack or domain** (29)
+
+`accessibility-compliance` `ui-design` `frontend-design` `frontend-react` `frontend-mobile-development` `multi-platform-apps` `javascript-typescript` `typescript-patterns` `jvm-languages` `functional-programming` `systems-programming` `python-development` `shell-scripting` `api-batch-processor` `ai-ml-engineering-pack` `anthropic-pack` `data-engineering` `llm-application-dev` `langchain-mcp` `langchain-skills` `langsmith-mcp` `langsmith-skills` `sentry-skills` `playwright` `hol-guard` `protect-mcp` `review-agent-governance` `signed-audit-trails` `block-no-verify`
+
+**High always-on cost for the value** (1)
+
+`rust-skills`
+
